@@ -45,7 +45,7 @@ RUN wget -O /opt/elucidate-server.tar.gz https://github.com/dlcs/elucidate-serve
 RUN cd /opt/elucidate/elucidate-parent && mvn clean package install -U \
 	&& cd ../elucidate-common-lib && mvn clean package install -U \
 	&& cd ../elucidate-converter && mvn clean package install -U \
-	&& cd ../elucidate-server && mvn clean package install -U
+	&& cd ../elucidate-server && mvn clean package install -U \
 	&& cp /opt/elucidate/elucidate-server/target/annotation.war /usr/local/tomcat/webapps
 
 COPY run_elucidate.sh /opt/elucidate
