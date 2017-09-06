@@ -33,7 +33,7 @@ RUN add-apt-repository -y ppa:webupd8team/java \
 	&& rm -rf /var/cache/oracle-jdk8-installer
 
 # Install Tomcat 8.5.11
-RUN cd /tmp && wget http://apache.mirror.anlx.net/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
+RUN cd /tmp && wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
 RUN tar xzvf /tmp/apache-tomcat-8*.tar.gz -C /usr/local/tomcat --strip-components=1
 
 # Download Elucidate 1.4.0
