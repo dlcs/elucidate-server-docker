@@ -33,10 +33,13 @@ RUN add-apt-repository -y ppa:webupd8team/java \
 RUN cd /tmp && wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
 RUN tar xzvf /tmp/apache-tomcat-8*.tar.gz -C /usr/local/tomcat --strip-components=1
 
-# Download Elucidate 1.4.0
-RUN wget -O /opt/elucidate-server.tar.gz https://github.com/dlcs/elucidate-server/archive/1.4.0.tar.gz \
+# Download Elucidate 1.5.1
+RUN wget -O /opt/elucidate-server.tar.gz https://github.com/dlcs/elucidate-server/archive/1.5.1.tar.gz \
 	&& mkdir -p /opt/elucidate \
 	&& tar -xzvf /opt/elucidate-server.tar.gz --strip-components=1 -C /opt/elucidate
+
+# Patch pom.xml
+COPY pom.xml /opt/elucidate/elucidate-server/pom.xml
 
 # Compile Elucidate
 RUN cd /opt/elucidate/elucidate-parent && mvn clean package install -U \
